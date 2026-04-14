@@ -38,4 +38,19 @@ public class ContactService {
         System.out.println("[ContactService.findAll()]");
         return reporitory.findAll();
     }
+
+    public void delete(Long deleteId) {
+        System.out.println("[ContactService.delete()]");
+        //해당 아이디 존재 확인
+        boolean existsID = reporitory.findById(deleteId);
+        //있다면 삭제 요청
+        if (existsID){
+            //존재하는 경우 -> 삭제 요청
+            reporitory.deleteById(deleteId);
+            System.out.println("정상적으로 삭제되었습니다.");
+        }else {
+            //존재하지 않는 경우
+            System.out.println("존재하지 않는 아이디 입니다.");
+        }
+    }
 }
