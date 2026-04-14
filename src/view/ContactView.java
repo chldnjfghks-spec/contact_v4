@@ -1,7 +1,9 @@
 package view;
 
 import service.ContactService;
+import vo.Contact;
 
+import java.util.Map;
 import java.util.Scanner;
 
 
@@ -48,6 +50,15 @@ public class ContactView {
     }
     private void readAll() {
         System.out.println("[ContactView.readAll()]");
+        //맵을 읽어와서 화면에 출력
+        Map<Long, Contact>store = contactService.findAll();
+        if (store.isEmpty()){
+            System.out.println("저장된 자료가 없습니다.");
+        }
+        //출력
+        for(Long key : store.keySet()){
+            System.out.println(store.get(key));
+        }
     }
     private void update() {
         System.out.println("[ContactView.update()]");

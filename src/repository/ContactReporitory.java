@@ -21,4 +21,9 @@ public class ContactReporitory {
         state.increaseId();
         System.out.println("id 증가완료");
     }
+
+    public Map<Long, Contact> findAll() {
+        System.out.println("[ContactRepository.findAll]");
+        return state.getStore();
+    }
 }

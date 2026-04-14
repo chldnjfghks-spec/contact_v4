@@ -9,6 +9,7 @@ import java.util.Map;
 public class ContactService {
     private final ContactReporitory reporitory;
     private final ContactState state ;
+    private  ContactReporitory contactReporitory;
 
     public ContactService(ContactReporitory reporitory, ContactState state) {
         this.reporitory = reporitory;
@@ -31,5 +32,10 @@ public class ContactService {
         for (Long key : currStore.keySet()){
             System.out.println(currStore.get(key));
         }
+    }
+
+    public Map<Long, Contact> findAll() {
+        System.out.println("[ContactService.findAll()]");
+        return reporitory.findAll();
     }
 }
