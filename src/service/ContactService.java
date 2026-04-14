@@ -53,4 +53,18 @@ public class ContactService {
             System.out.println("존재하지 않는 아이디 입니다.");
         }
     }
+
+    public void update(Long updateId, String updatePhone) {
+        System.out.println("[ContactService.update()]");
+        boolean existsID = reporitory.findById(updateId);
+        //있다면 삭제 요청
+        if (existsID){
+            //존재하는 경우 -> 수정 요청
+            reporitory.updateById(updateId, updatePhone);
+            System.out.println("정상적으로 수정되었습니다.");
+        }else {
+            //존재하지 않는 경우
+            System.out.println("존재하지 않는 아이디 입니다.");
+        }
+    }
 }
