@@ -1,13 +1,16 @@
 package view;
 
+import service.ContactService;
+
 import java.util.Scanner;
 
 
 public class ContactView {
     private final Scanner sc ;
-
-    public ContactView(Scanner sc) {
+    private final ContactService contactService;
+    public ContactView(Scanner sc, ContactService contactService) {
         this.sc = sc;
+        this.contactService = contactService;
     }
 
     public void run(){
@@ -52,5 +55,19 @@ public class ContactView {
 
     private void create(){
         System.out.println("[ContactView.create()]");
+        //이름과 나이, 전화번호를 입력받아서
+        //서비스에 전달한다.
+        String name;
+        int age;
+        String phone;
+        System.out.println("이름 :");
+        name = sc.next();
+        System.out.println("나이 :");
+        age = sc.nextInt();
+        System.out.println("전화번호 :");
+        phone = sc.next();
+
+        //받은 값들을 service.ContactService.insert() 전달
+        contactService.insert(name,age,phone);
     }
 }
